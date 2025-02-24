@@ -27,6 +27,20 @@ class AuthService {
   }
 
 //reg usign email pass
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      User? user = result.user;
+
+      return _userWithFirebaseUserUid(user);
+    } catch (err) {
+      return null;
+    }
+  }
+
 //signIn using email [pass]
 //sign in gmail pass
 //signout
