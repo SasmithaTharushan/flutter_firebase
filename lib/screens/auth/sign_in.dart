@@ -48,126 +48,137 @@ class _sign_InState extends State<sign_In> {
                 Center(
                     child: Image.asset(
                   'assets/images/profile.png',
-                  height: 200,
+                  height: 120,
                 )),
-                Form(
-                    key: _formKey,
-                    child: Column(children: [
-                      //email
-                      TextFormField(
-                        validator: (value) =>
-                            value!.isEmpty ? 'Enter a valid email' : null,
-                        onChanged: (value) {
-                          setState(() {
-                            email = value;
-                          });
-                        },
-                      ),
-                      //password
-                      TextFormField(
-                        validator: (value) =>
-                            value!.length < 7 ? 'Enter a valid password' : null,
-                        onChanged: (value) {
-                          setState(() {
-                            password = value;
-                          });
-                        },
-                      ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Form(
+                      key: _formKey,
+                      child: Column(children: [
+                        //email
+                        TextFormField(
+                          decoration: textInputDecoration,
+                          validator: (value) =>
+                              value!.isEmpty ? 'Enter a valid email' : null,
+                          onChanged: (value) {
+                            setState(() {
+                              email = value;
+                            });
+                          },
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        //password
+                        TextFormField(
+                          decoration: textInputDecoration.copyWith(
+                              hintText: 'Password'),
+                          validator: (value) => value!.length < 7
+                              ? 'Enter a valid password'
+                              : null,
+                          onChanged: (value) {
+                            setState(() {
+                              password = value;
+                            });
+                          },
+                        ),
 
-                      //google
-                      const SizedBox(height: 20),
-                      const Text(
-                        "Login in with",
-                        style: descStyle,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          //_auth.signInWithGoogle();
-                        },
-                        //sign in with google
+                        //google
+                        const SizedBox(height: 20),
+                        const Text(
+                          "Login in with",
+                          style: descStyle,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            //_auth.signInWithGoogle();
+                          },
+                          //sign in with google
 
-                        child: Center(
-                          child: Image.asset(
-                            'assets/images/google.png',
-                            height: 50,
+                          child: Center(
+                            child: Image.asset(
+                              'assets/images/google.png',
+                              height: 50,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      //register
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Don't have an account?",
-                            style: descStyle,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/register');
-                            },
-                            child: Text(
-                              "Register",
-                              style: TextStyle(
-                                  color: mainBlue, fontWeight: FontWeight.w600),
+                        const SizedBox(height: 20),
+                        //register
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Don't have an account?",
+                              style: descStyle,
                             ),
-                          )
-                        ],
-                      ),
-                      //sign in button
-                      GestureDetector(
-                        //method to login
-                        onTap: () {},
-
-                        child: Container(
-                            height: 40,
-                            width: 200,
-                            decoration: BoxDecoration(
-                                color: bgBlack,
-                                borderRadius: BorderRadius.circular(100),
-                                border:
-                                    Border.all(width: 2, color: mainYellow)),
-                            child: Center(
-                              child: const Text(
-                                "Login",
+                            SizedBox(
+                              width: 10,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/register');
+                              },
+                              child: Text(
+                                "Register",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
+                                    color: mainBlue,
                                     fontWeight: FontWeight.w600),
                               ),
-                            )),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                            )
+                          ],
+                        ),
+                        //sign in button
+                        GestureDetector(
+                          //method to login
+                          onTap: () {},
 
-                      //anon sign
-                      GestureDetector(
-                        //method to login
-                        onTap: () {},
+                          child: Container(
+                              height: 40,
+                              width: 200,
+                              decoration: BoxDecoration(
+                                  color: bgBlack,
+                                  borderRadius: BorderRadius.circular(100),
+                                  border:
+                                      Border.all(width: 2, color: mainYellow)),
+                              child: Center(
+                                child: const Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
 
-                        child: Container(
-                            height: 40,
-                            width: 200,
-                            decoration: BoxDecoration(
-                                color: bgBlack,
-                                borderRadius: BorderRadius.circular(100),
-                                border:
-                                    Border.all(width: 2, color: mainYellow)),
-                            child: Center(
-                              child: const Text(
-                                "Login as Guest",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            )),
-                      )
-                    ]))
+                        //anon sign
+                        GestureDetector(
+                          //method to login
+                          onTap: () {},
+
+                          child: Container(
+                              height: 40,
+                              width: 200,
+                              decoration: BoxDecoration(
+                                  color: bgBlack,
+                                  borderRadius: BorderRadius.circular(100),
+                                  border:
+                                      Border.all(width: 2, color: mainYellow)),
+                              child: Center(
+                                child: const Text(
+                                  "Login as Guest",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              )),
+                        )
+                      ])),
+                )
               ],
             ),
           ),
